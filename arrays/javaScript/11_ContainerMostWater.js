@@ -24,14 +24,25 @@ n == height.length
 */
 
 function maxArea(height){
+    if(height.length >(Math.pow(10,5)) || height.length <(2)){return }
     let max =0;
     let temp =0;
-    for(let i=1;i<height.length;i++){
-        temp = Math.sqrt()
+    for(let i=0;i<height.length;i++){
+        for(let j =i+1;j<height.length;j++){
+            if(height[i]<=height[j]){
+                temp = height[i]*(j-i)
+            }
+            else{
+                temp = height[j]*(j-i)
+            }
+        if(temp>max){
+            max = temp;
+        }
+        }
     }
-    console.log(height)
-    const area =height[(height.length - 2)] *height[height.length - 2];
-    return area;
+    return max;
 }
+
+// code works but is not optimal
 
 console.log(maxArea([1,8,6,2,5,4,8,3,7]))
