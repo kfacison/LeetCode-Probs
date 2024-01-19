@@ -33,18 +33,26 @@ function threeSum(nums){
     nums.sort((a, b) => a - b);
     let finalResult = [];
     for(let i = 0; i < nums.length - 2; i++){
+        if(i>0 && nums[i] == nums[i-1]){
+            continue;
+        }
         let num1 = nums[i];
         let left = i + 1;
         let right = nums.length - 1;
-        
-        while (left < right) {
-            let currentSum = num1 + nums[left] + nums[right];
-            if (currentSum === 0) {
-                finalResult.push([num1, nums[left], nums[right]]);
-            } else if (currentSum < 0) {
-                left++;
-            } else {
+
+        while(left<right){
+            let threesum = num1+nums[left]+nums[right]
+            if(threesum>0){
                 right--;
+            }else if(threesum<0){
+                left++;
+            }else{
+                finalResult.push([num1,nums[left],nums[right]])
+                left++;
+
+                while(nums[left] == nums[left-1] && left<right){
+                    left++;
+                }
             }
         }
     }
