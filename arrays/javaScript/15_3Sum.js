@@ -29,3 +29,27 @@ Constraints:
 -10^5 <= nums[i] <= 10^5
 */
 
+function threeSum(nums){
+    nums.sort((a, b) => a - b);
+    let finalResult = [];
+    for(let i = 0; i < nums.length - 2; i++){
+        let num1 = nums[i];
+        let left = i + 1;
+        let right = nums.length - 1;
+        
+        while (left < right) {
+            let currentSum = num1 + nums[left] + nums[right];
+            if (currentSum === 0) {
+                finalResult.push([num1, nums[left], nums[right]]);
+            } else if (currentSum < 0) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+    }
+
+    return finalResult
+}
+
+console.log(threeSum([-1,0,1,2,-1,-4]))
