@@ -30,7 +30,7 @@ Constraints:
 */
 
 function nextPermutation(nums){
-    
+    return "skiped"
 }
 
 console.log(nextPermutation([1,2,3]));
