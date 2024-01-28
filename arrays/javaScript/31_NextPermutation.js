@@ -30,7 +30,28 @@ Constraints:
 */
 
 function nextPermutation(nums){
-    return "skiped"
+    let n = nums.length;
+    let k,l,reversedNums;
+    for(k = n -2;k>=0; k--){
+        if(nums[k]<nums[k+1]){
+            break;
+        }
+    }
+    if(k<0){
+        reversedNums = nums.reverse()
+    } else{
+        for(l = n-1; l>k;l--){
+            if(nums[l]>nums[k]){
+                break;
+            }
+        }
+        const temp = nums[k];
+        nums[k] = nums[l];
+        nums[l] = temp;
+        reversedNums = nums.reverse()
+    }
+    return reversedNums;
 }
 
-console.log(nextPermutation([1,2,3]));
+console.log(nextPermutation([1,2,3]));//[1,3,2]
+console.log(nextPermutation([1,3,2]));//[2,1,3]
