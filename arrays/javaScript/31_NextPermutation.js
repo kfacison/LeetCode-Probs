@@ -53,5 +53,61 @@ function nextPermutation(nums){
     return reversedNums;
 }
 
-console.log(nextPermutation([1,2,3]));//[1,3,2]
-console.log(nextPermutation([1,3,2]));//[2,1,3]
+function nextPermutation2(nums){
+
+    for(let i = nums.length-1; i >= 0; i--) {
+        if(nums[i] < nums[i+1]) {
+            // const large = nextLarge(i);
+            let large;
+            for(let j = nums.length-1; j > i; j--) {
+                if(nums[j] > nums[i]){large = j};
+            }
+
+            // swap(i, large);
+            [nums[i], nums[large]] = [nums[large], nums[i]];
+
+            // reverse(i+1);
+            let start = i+1, end = nums.length-1;
+            
+            while(start < end) {
+                //swap(start, end);
+                [nums[start], nums[end]] = [nums[end], nums[start]];
+                start++;
+                end--;
+            }
+
+            return nums;
+        }
+    }
+	
+	// If there is no next permutation reverse the arr
+    return nums.reverse()
+    
+    function swap(i, j) {
+        [nums[i], nums[j]] = [nums[j], nums[i]];
+    }
+    
+    function reverse(idx) {
+        let start = idx, end = nums.length-1;
+        
+        while(start < end) {
+            swap(start, end);
+            start++;
+            end--;
+        }
+    }
+    
+    function nextLarge(idx) {
+        for(let i = nums.length-1; i > idx; i--) {
+            if(nums[i] > nums[idx]) return i;
+        }
+    }
+}
+
+//console.log(nextPermutation([1,2,3]));
+//[1,3,2]
+//console.log(nextPermutation([1,3,2]));
+//[2,1,3]
+
+console.log(nextPermutation2([1,2,3]));//[1,3,2]
+console.log(nextPermutation2([1,3,2]));//[2,1,3]
