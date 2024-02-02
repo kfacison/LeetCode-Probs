@@ -27,7 +27,25 @@ nums is a non-decreasing array.
 */
 
 function searchRange(nums, target){
-
+    const pos =[];
+    for(let i=0;i<nums.length;i++){
+        //console.log(`i=${i} and nums[i]=${nums[i]}`);
+        if(nums[i]==target){
+            pos.push(i);
+            break;
+        }
+    }
+    if(pos.length==0){
+        pos.push(-1,-1);
+        return pos;
+    }
+    for(let i=nums.length-1;i>-1;i--){
+        //console.log(`i=${i} and nums[i]=${nums[i]}`);
+        if(nums[i]==target){
+            pos.push(i);
+            return pos;
+        }
+    }
 }
 
 console.log(searchRange([5,7,7,8,8,10],8)); 
