@@ -72,9 +72,13 @@ console.log(largestDivisibleSubset([1,2,3]))
 //[1,2] or [1,3]
 
 console.log(largestDivisibleSubset([1,2,4,8]))
+//[1,2,4,8]
 
 console.log(largestDivisibleSubset([3,17]))
+//[3] or [17]
 
 console.log(largestDivisibleSubset([3,4,16,8]))
+//[4,8,16]
 
 console.log(largestDivisibleSubset([2,3,8,9,27]))
+//[3,9,27]
