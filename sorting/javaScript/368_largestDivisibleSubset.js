@@ -106,6 +106,7 @@ console.log(largestDivisibleSubset([3,17]))
 
 console.log(largestDivisibleSubset([3,4,16,8]))
 //[4,8,16]
-
 console.log(largestDivisibleSubset([2,3,8,9,27]))
 //[3,9,27]
+
+//attempted and then discared
